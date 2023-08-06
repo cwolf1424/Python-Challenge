@@ -9,13 +9,14 @@ data_file_path = "PyPoll/Resources/election_data.csv"
 total_votes = 0
 candidates = []
 candidate_votes = []
-candidates_dict = []
+vote_sections = []
 
 #open results
 with open (data_file_path) as results:
     results_reader=csv.reader(results)
     for vote in results:
-        print (vote)
+        total_votes +=1
+    print (total_votes)
 #read results
 
 #print results
