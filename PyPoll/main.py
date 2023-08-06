@@ -24,19 +24,34 @@ with open (data_file_path) as results:
                 print (f'[{header.index(section)}]',section)
             #remove header from vote count
             total_votes -=1
-        total_votes +=1
+        else:
+            #set categores for vote base on header
+            ballot_id = vote [0]
+            county = vote [1]
+            candidate = vote [2]
+            #fill candidates list
+            if candidate not in candidates:
+                candidates.append (candidate)
+                candidate_votes.append (1)
+            #total votes per candidate
+            else:
+                current_votes = candidate_votes[candidates.index(candidate)]
+                current_votes +=1
+                candidate_votes[candidates.index(candidate)] = current_votes  
+            total_votes +=1
+    print (f'Candidates: {candidates}')
     
 
 
 #print results
-
-##print ("Election Results")
+    print ("Election Results")
     print ("-------------------------")
     print (f'Total Votes: {total_votes}')
     print ("-------------------------")
-##print ("<cand1_name>: <cand1_percent>% (<cand1_vote_count>)")
-##print ("-------------------------")
-##print ("Winner: <winner_name")
-##print ("------------------------")
+    for candidate in candidates:
+        print (f'{candidate}: <cand1_percent>% ({candidate_votes[candidates.index(candidate)]})')
+    print ("-------------------------")
+    print ("Winner: <winner_name")
+    print ("------------------------")
 
 #export results
