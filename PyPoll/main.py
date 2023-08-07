@@ -21,9 +21,6 @@ with open (data_file_path,"r") as results:
         #find header_line categories
         if (results_reader.line_num ==1):
             header_line = vote
-            ##print ("Ballot Sections:")
-            ##for section in header_line:
-            ##    print (f'{header_line.index(section)}',section)
         else:
             #set categores for vote based on header_line
             ballot_id = vote [0]
@@ -33,24 +30,24 @@ with open (data_file_path,"r") as results:
             if candidate not in candidates:
                 candidates.append (candidate)
                 candidate_vote_totals.append (1)
-            #total votes per candidate
+            #calculate total votes per candidate
             else:
                 candidate_number = candidates.index(candidate)
                 candidate_vote_totals[candidate_number] +=1
             #add the vote to the votes total
             total_votes +=1
-    #figure percents for candidates
+    #calculate percents for candidates
     winning_total = 0
     for total in candidate_vote_totals:
         current_percent = ((total/total_votes)*100)
         candidate_percents.append (current_percent)
-        #find winner
+        #determine winner
         if total>winning_total:
             candidate_number = candidate_vote_totals.index(total)
             winning_total = total
             winner = (candidates[candidate_number])            
 
-#print results
+#print results in terminal
     print ("")
     print ("Election Results")
     print ("")
@@ -70,7 +67,7 @@ with open (data_file_path,"r") as results:
     print ("")
     print ("------------------------")
 
-#export results
+#export results to text file
 
 #get results file path
 results_file_path="PyPoll/Analysis/PyPoll_Analysis.txt"
