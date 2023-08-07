@@ -1,7 +1,7 @@
 #modules
 import csv
 
-#get file path
+#get data file path
 data_file_path = "PyPoll/Resources/election_data.csv"
 
 #set variables
@@ -14,7 +14,7 @@ winner = ""
 header = []
 
 #open results
-with open (data_file_path) as results:
+with open (data_file_path,"r") as results:
     #read results
     results_reader=csv.reader(results)
     for vote in results_reader:
@@ -46,6 +46,7 @@ with open (data_file_path) as results:
     for total in candidate_votes:
         current_percent = ((total/total_votes)*100)
         candidate_percent.append (current_percent)
+        #find winner
         if total>winning_total:
             candidate_number = candidate_votes.index(total)
             winning_total = total
@@ -64,7 +65,7 @@ with open (data_file_path) as results:
     for candidate in candidates:
         candidate_number = candidates.index(candidate)
         print (f'{candidate}: {candidate_percent[candidate_number]}% ({candidate_votes[candidate_number]})')
-    print ("")
+        print ("")
     print ("-------------------------")
     print ("")
     print (f'Winner: {winner}')
@@ -72,3 +73,28 @@ with open (data_file_path) as results:
     print ("------------------------")
 
 #export results
+
+#get results file path
+results_file_path="PyPoll/Analysis/PyPoll_Analysis.txt"
+
+#open results file
+with open(results_file_path,"w") as results_file:
+    #write to results file
+    results_file.write ("\n")
+    results_file.write ("Election Results\n")
+    results_file.write ("\n")
+    results_file.write ("-------------------------\n")
+    results_file.write ("\n")
+    results_file.write (f'Total Votes: {total_votes}\n')
+    results_file.write ("\n")
+    results_file.write ("-------------------------\n")
+    results_file.write ("\n")
+    for candidate in candidates:
+        candidate_number = candidates.index(candidate)
+        results_file.write (f'{candidate}: {candidate_percent[candidate_number]}% ({candidate_votes[candidate_number]})\n')
+        results_file.write ("\n")
+    results_file.write ("-------------------------\n")
+    results_file.write ("\n")
+    results_file.write (f'Winner: {winner}\n')
+    results_file.write ("\n")
+    results_file.write ("------------------------\n")
