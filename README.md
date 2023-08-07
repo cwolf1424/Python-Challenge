@@ -1,6 +1,10 @@
 # python-challenge
 Challenge assignment for Python
 
+#PyBank
+--------------------------------------------------
+
+
 #PyPoll
 --------------------------------------------------
 Teacher (Benjamen Alford) helped the class with wording of adding candidates.
@@ -15,16 +19,18 @@ I did not re-write it a different way as it didn't really seem like there was a 
 I then used the logic from this help to write my other sections/tracking variables.
 
 --------------------------------------------------
+I also used the below section from one of our in-class assignments:
 
-I also used the following from my Ben:
+for comic in reader:
+    if(reader.line_num ==1):
+    header = comic
 
-current_votes =candidate_votes[candidates.index(candidate)]
-current_votes = current_votes+1
-candidate_votes[candidates.index(candidate)] = current_votes
+as the inspiration for the section in my file:
 
-to inspire my section:
+for vote in results_reader:
+    #find header_line categories
+    if (results_reader.line_num ==1):
+        header_line = vote
+        ##print ("Ballot Sections:")
 
-candidate_number = candidates.index(candidate)
-current_votes = candidate_votes[candidate_number]
-current_votes +=1
-candidate_votes[candidate_number] = current_votes  
+--------------------------------------------------
