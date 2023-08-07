@@ -35,14 +35,13 @@ with open (data_file_path,"r") as budget:
             if (budget_reader.line_num >2):
                 change = (float(profit_losses)-float(prev_profit_losses))
                 changes.append (change)
+                #calculate greatest profit increase and decrease
+                if change>greatest_p_increase:
+                    greatest_p_increase = change
+                if change<greatest_p_decrease:
+                    greatest_p_decrease = change
+            #set current profit/losses to previous profit/losses
             prev_profit_losses = profit_losses
-    
-#calculate greates profit and loss
-for change in changes:
-    if change>greatest_p_increase:
-        greatest_p_increase = change
-    if change<greatest_p_decrease:
-        greatest_p_decrease = change
 
 #calculate total change
 total_change = 0
