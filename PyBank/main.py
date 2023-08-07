@@ -56,6 +56,7 @@ average_change = (float(total_change)/float(len(changes)))
 #print results in terminal
 print ("")
 print ("Financial Analysis")
+print ("")
 print ("----------------------------")
 print ("")
 print (f'Total Months: {total_months}')
@@ -71,7 +72,25 @@ print ("")
 
 #export results to text file
 
+#get results file path
+results_file_path="PyBank/Analysis/PyBank_Analysis.txt"
 
-
-
-
+#open results file
+with open(results_file_path,"w") as results_file:
+    
+    #write to results file
+    results_file.write ("\n")
+    results_file.write ("Financial Analysis\n")
+    results_file.write ("\n")
+    results_file.write ("----------------------------\n")
+    results_file.write ("\n")
+    results_file.write (f'Total Months: {total_months}\n')
+    results_file.write ("\n")
+    results_file.write (f'Total: ${total_amount}\n')
+    results_file.write ("\n")
+    results_file.write (f'Average Change: ${average_change}\n')
+    results_file.write ("\n")
+    results_file.write (f'Greatest Increase in Profits: {greatest_p_increase_date} (${greatest_p_increase})\n')
+    results_file.write ("\n")
+    results_file.write (f'Greatest Decrease in Profits: {greatest_p_decrease_date} (${greatest_p_decrease})\n')
+    results_file.write ("\n")

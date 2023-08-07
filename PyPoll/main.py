@@ -74,6 +74,7 @@ results_file_path="PyPoll/Analysis/PyPoll_Analysis.txt"
 
 #open results file
 with open(results_file_path,"w") as results_file:
+    
     #write to results file
     results_file.write ("\n")
     results_file.write ("Election Results\n")
