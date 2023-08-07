@@ -38,8 +38,10 @@ with open (data_file_path,"r") as budget:
                 #calculate greatest profit increase and decrease
                 if change>greatest_p_increase:
                     greatest_p_increase = change
+                    greatest_p_increase_date = date
                 if change<greatest_p_decrease:
                     greatest_p_decrease = change
+                    greatest_p_decrease_date = date
             #set current profit/losses to previous profit/losses
             prev_profit_losses = profit_losses
 
@@ -62,9 +64,10 @@ print (f'Total: ${total_amount}')
 print ("")
 print (f'Average Change: ${average_change}')
 print ("")
-print (f'Greatest Increase in Profits: <DATE> (${greatest_p_increase})')
+print (f'Greatest Increase in Profits: {greatest_p_increase_date} (${greatest_p_increase})')
 print ("")
-print (f'Greatest Decrease in Profits: <DATE> (${greatest_p_decrease})')
+print (f'Greatest Decrease in Profits: {greatest_p_decrease_date} (${greatest_p_decrease})')
+print ("")
 
 #export results to text file
 
