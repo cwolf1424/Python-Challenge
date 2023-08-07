@@ -10,6 +10,7 @@ total_votes = 0
 candidates = []
 candidate_votes = []
 candidate_percent = []
+winner = ""
 header = []
 
 #open results
@@ -23,9 +24,6 @@ with open (data_file_path) as results:
             ##print ("Ballot Sections:")
             ##for section in header:
             ##    print (f'[{header.index(section)}]',section)
-
-            #remove header from vote count
-            total_votes -=1
         else:
             #set categores for vote based on header
             ballot_id = vote [0]
@@ -41,11 +39,17 @@ with open (data_file_path) as results:
                 current_votes = candidate_votes[candidate_number]
                 current_votes +=1
                 candidate_votes[candidate_number] = current_votes  
-            #add the vote to the total
+            #add the vote to the votes total
             total_votes +=1
-            #figure percents for candidates
-            ##for percent in candidate_percent:
-
+    #figure percents for candidates
+    winning_total = 0
+    for total in candidate_votes:
+        current_percent = ((total/total_votes)*100)
+        candidate_percent.append (current_percent)
+        if total>winning_total:
+            candidate_number = candidate_votes.index(total)
+            winning_total = total
+            winner = (candidates[candidate_number])            
 
 #print results
     print ("")
@@ -58,11 +62,12 @@ with open (data_file_path) as results:
     print ("-------------------------")
     print ("")
     for candidate in candidates:
-        print (f'{candidate}: <cand1_percent>% ({candidate_votes[candidates.index(candidate)]})')
+        candidate_number = candidates.index(candidate)
+        print (f'{candidate}: {candidate_percent[candidate_number]}% ({candidate_votes[candidate_number]})')
     print ("")
     print ("-------------------------")
     print ("")
-    print ("Winner: <winner_name>")
+    print (f'Winner: {winner}')
     print ("")
     print ("------------------------")
 
